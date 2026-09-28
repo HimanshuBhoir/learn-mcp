@@ -2,7 +2,11 @@
 
 A minimal [MCP](https://modelcontextprotocol.io) server built with [FastMCP](https://gofastmcp.com). It lets Claude Code (or any MCP client) manage your dev tasks and log what you learn. It demonstrates the three MCP primitives: tools, resources and prompts.
 
-This is Part 1 (local) of a three-part series. Part 2 hosts it on Render; Part 3 adds auth with Descope. The article is in [content/medium-article.md](content/medium-article.md).
+Part of a three-part series:
+
+1. **Local**: run it over stdio with Claude Code. Article: [content/medium-article.md](content/medium-article.md).
+2. **Hosted**: deploy it to Render over HTTP (below). Article: [content/medium-article-part2.md](content/medium-article-part2.md).
+3. **Secured**: add auth with Descope (coming next).
 
 ## What it exposes
 
@@ -18,7 +22,7 @@ This is Part 1 (local) of a three-part series. Part 2 hosts it on Render; Part 3
 | Prompt | `plan_my_day(hours?)` | Time-blocked plan from open tasks |
 | Prompt | `progress_review()` | Summary of completed tasks and learnings |
 
-Data is stored in `data/db.json`, created on first write. Delete it to start fresh.
+Data is stored in `data/db.json`, created on first write. Delete it to start fresh. On Render this file is temporary (see [Deploy to Render](#deploy-to-render)).
 
 ## Requirements
 
@@ -39,6 +43,12 @@ The server uses stdio, so you normally don't start it yourself; the client does.
 
 ```bash
 uv run server.py
+```
+
+To run it as a web server (same as Render), serving MCP at `http://127.0.0.1:8000/mcp`:
+
+```bash
+uv run fastmcp run server.py --transport http --port 8000
 ```
 
 ## Use with Claude Code
@@ -71,6 +81,37 @@ uv run fastmcp call server.py plan_my_day hours=3 --prompt   # get a prompt
 uv run fastmcp dev inspector server.py                       # browser UI
 ```
 
+## Deploy to Render
+
+Create a **Web Service** from this repo (Python runtime) with:
+
+| Setting | Value |
+|---|---|
+| Branch | The branch you want to deploy, e.g. `release/phase1` |
+| Build Command | `uv sync --frozen && uv cache prune --ci` |
+| Start Command | `uv run fastmcp run server.py --transport http --host 0.0.0.0 --port $PORT` |
+
+No code changes are needed; the start command switches the transport to HTTP. The server is then available at `https://<your-service>.onrender.com/mcp`. Opening that URL in a browser shows an error, which is expected: MCP clients send POST requests.
+
+Test it:
+
+```bash
+uv run fastmcp call https://<your-service>.onrender.com/mcp add_task title="Hello from Render" --auth none
+uv run fastmcp call https://<your-service>.onrender.com/mcp tasks://open --auth none
+```
+
+Connect Claude Code to it:
+
+```bash
+claude mcp add --transport http dev-task-log-remote https://<your-service>.onrender.com/mcp
+```
+
+Things to know:
+
+- **Data is temporary.** `db.json` lives on Render's temporary disk, at `/opt/render/project/src/data/db.json`. It is wiped on every redeploy, restart or spin-down. Use a persistent disk (paid plans) or a hosted database to keep it.
+- **Cold starts.** Free services sleep when idle, so the first request after a break can be slow.
+- **No auth yet.** Anyone with the URL can read and change tasks. Keep the URL private until Part 3.
+
 ## Project structure
 
 ```
@@ -78,6 +119,6 @@ learn-mcp/
 ├── server.py              # the MCP server
 ├── .mcp.json              # Claude Code config
 ├── .vscode/mcp.json       # VS Code config
-├── data/db.json           # local data (git-ignored)
+├── data/db.json           # data file (git-ignored, created on first write)
 └── content/               # article drafts
 ```
