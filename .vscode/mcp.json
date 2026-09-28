@@ -1,0 +1,10 @@
+{
+  "servers": {
+    "dev-task-log": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "server.py"],
+      "cwd": "${workspaceFolder}"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+[project]
+name = "learn-mcp"
+version = "0.1.0"
+description = "Hands-on MCP server: a personal dev task and learning log built with FastMCP"
+readme = "README.md"
+authors = [
+    { name = "Himanshu Bhoir", email = "hbhoir@webmd.net" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "fastmcp>=4.0.10",
+]
+
+[tool.uv]
+package = false
