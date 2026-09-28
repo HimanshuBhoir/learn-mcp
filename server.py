@@ -14,6 +14,8 @@ if os.getenv("DESCOPE_CONFIG_URL"):
     auth = DescopeProvider(
         config_url=os.environ["DESCOPE_CONFIG_URL"],
         base_url=os.environ["BASE_URL"],
+        # Otherwise every scope in Descope's config is advertised, and Descope rejects "phone".
+        scopes_supported=["openid", "profile", "email"],
     )
 
 mcp = FastMCP(
