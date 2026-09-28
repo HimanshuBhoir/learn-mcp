@@ -1,0 +1,28 @@
+server.py
+  s_a7cce4615ba5d9::t_dbe7765b94a0d5 23,26-30,36-41
+  s_a7cce4615ba5d9::t_50cc33230715e7 20-22
+  s_a7cce4615ba5d9::t_615d7ea8a9fc3c 42-44
+.gitignore
+  s_a7cce4615ba5d9::t_51165772966778 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "a9ff1504de1afb4cf3697eadecf3c092cf3e608d",
+  "prompts": {},
+  "humans": {
+    "h_da73126186923a": {
+      "author": "Himanshu Bhoir <himanshubhoir25@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a7cce4615ba5d9": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "9390eeb6-495d-4569-bbfc-e7064f1076e7",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Himanshu Bhoir <himanshubhoir25@gmail.com>"
+    }
+  }
+}
