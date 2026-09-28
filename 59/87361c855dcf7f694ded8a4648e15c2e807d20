@@ -1,0 +1,27 @@
+.gitignore
+  h_da73126186923a 15
+README.md
+  s_a7cce4615ba5d9::t_e4ecfab442ba7a 1-66,68-83
+  s_a7cce4615ba5d9::t_84b464f2d3b44b 67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "5987361c855dcf7f694ded8a4648e15c2e807d20",
+  "prompts": {},
+  "humans": {
+    "h_da73126186923a": {
+      "author": "Himanshu Bhoir <himanshubhoir25@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a7cce4615ba5d9": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "9390eeb6-495d-4569-bbfc-e7064f1076e7",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Himanshu Bhoir <himanshubhoir25@gmail.com>"
+    }
+  }
+}
