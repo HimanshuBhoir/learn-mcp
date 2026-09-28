@@ -10,5 +10,5 @@ wheels/
 .venv
 
 # Local data and secrets
-*.db
+data/db.json
 .env
