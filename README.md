@@ -211,6 +211,15 @@ Close that terminal afterwards, or the variables stay set there. A full browser 
 
 **Important:** if `DESCOPE_CONFIG_URL` is missing, the server starts without auth. Run the `--auth none` check after every deploy.
 
+### Troubleshooting
+
+| Error | Cause | Fix |
+|---|---|---|
+| `Requested resource not in aud whitelist` | The **MCP Server URL** in Descope is empty or doesn't exactly match the server's URL | Set it to `https://<your-service>.onrender.com/mcp` in the MCP server's settings and save |
+| `Received invalid scope ... invalid=[phone]` | The client requested a scope the Descope MCP server doesn't allow | Already handled in `server.py` via `scopes_supported=["openid", "profile", "email"]` |
+| `--auth none` still lists the tools | Login is off: `DESCOPE_CONFIG_URL` isn't set where the server runs | Set it on Render (or in the same terminal locally) and restart |
+| Claude Code keeps failing after a fix | It kept an earlier failed registration | `claude mcp remove dev-task-log-remote`, add it again, then **Authenticate** |
+
 ## Project structure
 
 ```
