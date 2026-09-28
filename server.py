@@ -20,6 +20,7 @@ def load() -> dict:
 
 
 def save(db: dict) -> None:
+    DB_FILE.parent.mkdir(exist_ok=True)
     DB_FILE.write_text(json.dumps(db, indent=2), encoding="utf-8")
 
 
