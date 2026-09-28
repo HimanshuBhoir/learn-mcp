@@ -1,0 +1,36 @@
+README.md
+  s_a7cce4615ba5d9::t_c92c936bd2b1c0 70
+  s_a7cce4615ba5d9::t_31840190b150df 122-129,158,177
+  s_a7cce4615ba5d9::t_9e7efe478530ff 71,76,86-90,92,94,96,98-100,102,104-108,110,114-115,118-121,168,170,201
+  s_a7cce4615ba5d9::t_72f4c71abce674 9,25,40,42-51,57-69,72-74,113
+  s_a7cce4615ba5d9::t_444143c0a666bc 75
+  s_a7cce4615ba5d9::t_e7a0145eca03c9 77-79
+  s_a7cce4615ba5d9::t_1a45ae273efd14 155-157
+  s_a7cce4615ba5d9::t_d1fc74397d1828 159-161,165-167
+  s_a7cce4615ba5d9::t_daa4bced402035 169
+  s_a7cce4615ba5d9::t_11f16022c8e032 171-176
+  s_a7cce4615ba5d9::t_b6bbd1b533173b 178-180
+  s_a7cce4615ba5d9::t_b3ef23b60adbe0 198-200
+  s_a7cce4615ba5d9::t_1ae12d3461fa76 202-203
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "5cc3137c3deb37801b7cc4339505102b88ab3d31",
+  "prompts": {},
+  "humans": {
+    "h_da73126186923a": {
+      "author": "Himanshu Bhoir <himanshubhoir25@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a7cce4615ba5d9": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "9390eeb6-495d-4569-bbfc-e7064f1076e7",
+        "model": "gpt-5.3-codex"
+      },
+      "human_author": "Himanshu Bhoir <himanshubhoir25@gmail.com>"
+    }
+  }
+}
